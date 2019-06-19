@@ -14,7 +14,15 @@ $(document).ready(function() {   // Allows everything to load before jQuery
     $('.active').show();
 
     $('#next').on('click', function(){
-        alert('Next was clicked');
+        $('.active').removeClass('active').addClass('oldActive');
+        if($('.oldActive').is(':last-child')) {
+            $('.slide').first().addClass('active');
+        } else {
+            $('.oldActive').next().addClass('active');
+        }
+        $('.oldActive').removeClass('oldActive');
+        $('.slide').fadeOut(speed);
+        $('.active').fadeIn(speed);
 
     });
 
